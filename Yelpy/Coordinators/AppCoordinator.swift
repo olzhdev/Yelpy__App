@@ -36,7 +36,7 @@ class AppCoordinator: AppCoordinatorProtocol {
     
     func start() {
         if let tabBarController = tabBarController {
-            tabBarController.viewControllers = [mainFlow()!]
+            tabBarController.viewControllers = [mainFlow()!, favoritesFlow()!]
         }
     }
     
@@ -50,4 +50,19 @@ class AppCoordinator: AppCoordinatorProtocol {
 
         return mainCoordinator.startFirstView()
     }
+    
+    private func favoritesFlow() -> UINavigationController? {
+        guard let navController2 = navController2,
+              let moduleBuilder = moduleBuilder else { return nil }
+        
+        let favoritesCoordinator = CoordinatorBuilder().setFavoritesCoordinator(navController: navController2, moduleBuilder: moduleBuilder)
+        
+        favoritesCoordinator.startFirstView()?.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.rectangle.fill"), selectedImage: UIImage(systemName: "heart.rectangle.fill"))
+        
+        return favoritesCoordinator.startFirstView()
+    }
+    
+
+    
+    
 }

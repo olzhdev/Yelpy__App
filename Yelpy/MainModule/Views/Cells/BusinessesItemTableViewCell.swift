@@ -47,15 +47,15 @@ class BusinessesListItemTableViewCell: UITableViewCell {
             self.imageURL = model.imageURL
         }
         
-//        init(model: BusinessItemSD) {
-//            self.nameLabel = model.name ?? ""
-//            self.addressLabel = model.location ?? ""
-//            self.categoryLabel = model.categories ?? ""
-//            self.ratingLabel = model.rating ?? ""
-//            self.priceLabel = model.price ?? ""
-//            self.isClosedLabel = model.isClosedLabel ?? ""
-//            self.imageURL = model.imageURL ?? ""
-//        }
+        init(model: BusinessItemSD) {
+            self.nameLabel = model.name ?? ""
+            self.addressLabel = model.location ?? ""
+            self.categoryLabel = model.categories ?? ""
+            self.ratingLabel = model.rating ?? ""
+            self.priceLabel = model.price ?? ""
+            self.isClosedLabel = model.isClosedLabel ?? ""
+            self.imageURL = model.imageURL ?? ""
+        }
     }
     
 

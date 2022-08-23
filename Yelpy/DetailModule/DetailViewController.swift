@@ -58,7 +58,7 @@ class DetailViewController: UIViewController, DetailViewProtocol {
     
     
     func failure(error: Error) {
-        
+        showAlert(title: "Something went wrong", message: "Please, try again later")
     }
     
     /// Calls SafariVC when button tapped

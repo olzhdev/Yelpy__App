@@ -36,13 +36,17 @@ class CoordinatorBuilder {
     }
     
     func setMainCoordinator(navController: UINavigationController,
-                            moduleBuilder: ModuleBuilderProtocol) -> MainCoordinator {
+                            moduleBuilder: ModuleBuilderProtocol) -> MainCoordinator
+    {
         MainCoordinator(navController: navController,
                         moduleBuilder: moduleBuilder)
     }
     
-    func setFavoritesCoordinator() {
-        
+    func setFavoritesCoordinator(navController: UINavigationController,
+                                 moduleBuilder: ModuleBuilderProtocol) -> FavoritesCoordinator
+    {
+        FavoritesCoordinator(navController: navController,
+                             moduleBuilder: moduleBuilder)
     }
 
 }

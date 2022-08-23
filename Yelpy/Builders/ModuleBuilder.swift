@@ -53,7 +53,12 @@ class ModuleBuilder: ModuleBuilderProtocol {
     
     
     func buildFavoritesModule() -> FavoritesViewController {
-        return FavoritesViewController()
+        let view = FavoritesViewController()
+        let persistanceManager = PersistanceManager()
+        let presenter = FavoritesPresenter(view: view, persistanceManager: persistanceManager)
+        view.presenter = presenter
+        
+        return view
     }
     
     

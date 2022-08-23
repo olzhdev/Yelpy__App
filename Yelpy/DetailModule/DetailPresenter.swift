@@ -66,12 +66,13 @@ class DetailPresenter: DetailPresenterProtocol {
                 case .success(let business):
                     self.model = business
                     self.images = business.photos.shuffled()
+                    self.businessURL = business.url
+                    self.view.setMapCoordinatesAndAnnotation(longitude: business.coordinates.longitude, latitude: business.coordinates.latitude)
+
                     DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                         self.view.showSkeleton(flag: false)
                     }
                     self.view.formLayoutProperties(model: business)
-                    self.view.setMapCoordinatesAndAnnotation(longitude: business.coordinates.longitude, latitude: business.coordinates.latitude)
-                    self.businessURL = business.url
                     
                 case .failure(let error):
                     self.view.failure(error: error)

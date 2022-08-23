@@ -56,7 +56,7 @@ class MainCoordinator: Coordinator {
     func showDetailView() {
         guard let detailModule = moduleBuilder?.buildDetailModule(businessID: businessesID ?? "") else { return }
         
-        //detailModule.presenter.completionHandler = {_ in }
+        detailModule.presenter.completionHandler = {}
         
         navigationController?.pushViewController(detailModule, animated: true)
     }

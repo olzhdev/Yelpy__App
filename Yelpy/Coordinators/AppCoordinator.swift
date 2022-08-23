@@ -19,6 +19,7 @@ protocol AppCoordinatorProtocol: AppCoordinatorMain {
     func start()
 }
 
+/// Starting coordinator of application
 class AppCoordinator: AppCoordinatorProtocol {
     
     var tabBarController: UITabBarController?

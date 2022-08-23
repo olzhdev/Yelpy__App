@@ -38,7 +38,7 @@ protocol ListPresenterProtocol: AnyObject {
 }
 
 class ListPresenter: ListPresenterProtocol {
-    
+    // MARK: - Properties
     weak var view: ListViewProtocol!
     var APICaller: APICallerProtocol!
     var categoryName: String?
@@ -52,6 +52,8 @@ class ListPresenter: ListPresenterProtocol {
 
     var completionHandler: ((String) -> Void)?
     
+    
+    // MARK: - Init
     required init(view: ListViewProtocol,
                   APICaller: APICallerProtocol,
                   categoryName: String,
@@ -65,6 +67,8 @@ class ListPresenter: ListPresenterProtocol {
         setNavBarTitle()
     }
     
+    
+    // MARK: - Methods
     func fetchData(forCategory: String, count: Int, offset: Int, price: String) {
         ///Show spinner
         APICaller.getBusinessList(forCategory: forCategory, count: count, offset: offset, price: price) { [weak self] result in
@@ -81,7 +85,6 @@ class ListPresenter: ListPresenterProtocol {
                     self.view.success()
                 case .failure(let error):
                     self.view.failure(error: error)
-                    print(error)
                 }
             }
         }
@@ -120,5 +123,4 @@ class ListPresenter: ListPresenterProtocol {
     func didGoToBusinessInfoTapped(businessID: String) {
         completionHandler?(businessID)
     }
-    
 }

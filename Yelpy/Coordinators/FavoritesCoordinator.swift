@@ -7,17 +7,21 @@
 
 import UIKit
 
+/// Coordinator of FavoritesFlow
 class FavoritesCoordinator: Coordinator {
+    
     var navigationController: UINavigationController?
     var moduleBuilder: ModuleBuilderProtocol?
     var flowCompletionHandler: (() -> ())?
     
     var businessesID: String?
             
+    
     init(navController: UINavigationController, moduleBuilder: ModuleBuilderProtocol) {
         self.navigationController = navController
         self.moduleBuilder = moduleBuilder
     }
+    
     
     func startFirstView() -> UINavigationController? {
         guard let favoritesModule = moduleBuilder?.buildFavoritesModule() else { return nil }

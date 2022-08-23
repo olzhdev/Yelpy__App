@@ -5,10 +5,11 @@
 //  Created by MAC on 20.08.2022.
 //
 
-import Foundation
 import UIKit
 
+/// Coordinator of MainFlow
 class MainCoordinator: Coordinator {
+    
     var navigationController: UINavigationController?
     var moduleBuilder: ModuleBuilderProtocol?
     var flowCompletionHandler: (() -> ())?
@@ -16,11 +17,13 @@ class MainCoordinator: Coordinator {
     var businessesID: String?
     var categoryName: String?
     var APIAttribute: String?
-        
+      
+    
     init(navController: UINavigationController, moduleBuilder: ModuleBuilderProtocol) {
         self.navigationController = navController
         self.moduleBuilder = moduleBuilder
     }
+    
     
     func startFirstView() -> UINavigationController? {
         guard let mainModule = moduleBuilder?.buildMainModule() else { return nil }
@@ -60,7 +63,4 @@ class MainCoordinator: Coordinator {
         
         navigationController?.pushViewController(detailModule, animated: true)
     }
-    
-    
-    
 }

@@ -30,6 +30,7 @@ protocol MainPresenterProtocol: AnyObject {
 }
 
 class MainPresenter: MainPresenterProtocol {
+    // MARK: - Properties
     weak var view: MainViewProtocol!
     var APICaller: APICallerProtocol!
     
@@ -41,27 +42,34 @@ class MainPresenter: MainPresenterProtocol {
     var completionHandler: ((String, String) -> Void)?
     var completionHandler2: ((String) -> Void)?
     
+    
+    // MARK: - Init
     required init(view: MainViewProtocol, APICaller: APICallerProtocol) {
         self.view = view
         self.APICaller = APICaller
         fetchData()
     }
     
+    
+    // MARK: - Methods
     func fetchData() {
         APICaller.getBusinessList(forCategory: "hot_and_tranding",
                                   count: 5,
                                   offset: 0,
-                                  price: "1,2,3,4") {[weak self] result in
+                                  price: "1,2,3,4")
+        { [weak self] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let trendingArray):
-                    self.trendingArray = trendingArray.businesses
+            
+            switch result {
+            case .success(let trendingArray):
+                self.trendingArray = trendingArray.businesses
+                
+                DispatchQueue.main.async {
                     self.view.success()
-                case .failure(let error):
-                    print(error)
-                    //self.view.failure(error: error)
                 }
+                
+            case .failure(let error):
+                self.view.failure(error: error)
             }
         }
     }

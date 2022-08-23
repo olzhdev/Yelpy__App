@@ -8,11 +8,14 @@
 import UIKit
 
 class MainViewController: UIViewController, MainViewProtocol {
+    // MARK: - Properties & Layout elements
     lazy var contentView: LayoutMainView = .init()
     var presenter: MainPresenterProtocol!
     
     private var lastOffsetY: CGFloat = 0
     
+    
+    // MARK: - Lifecycle
     override func loadView() {
         view = contentView
     }
@@ -22,14 +25,6 @@ class MainViewController: UIViewController, MainViewProtocol {
         configureNavBar()
         setDelegates()
         registerCells()
-    }
-    
-    func success() {
-        contentView.trendingCollectionView.reloadData()
-    }
-    
-    func failure(error: Error) {
-        print(error)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +37,7 @@ class MainViewController: UIViewController, MainViewProtocol {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
+    // MARK: - Private methods
     /// Setting delegates for collection views
     private func setDelegates() {
         contentView.scrollView.delegate = self
@@ -93,11 +89,23 @@ class MainViewController: UIViewController, MainViewProtocol {
     }
     
     @objc private func logoButton() {}
-
     
+    
+    // MARK: - ViewProtocol methods
+    func success() {
+        contentView.trendingCollectionView.reloadData()
+    }
+    
+    func failure(error: Error) {
+        print("MainPresenter failure: \(error)")
+    }
 }
 
+
+// MARK: - Extensions
+
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
+    
     /// NumberOfItems
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -156,8 +164,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     ///DidSelectItemAt
-    
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         switch collectionView {
@@ -215,7 +221,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: UIScrollViewDelegate {
     /// 1-2 Functionality of hiding/showing navbar when sccrolling
     /// 1
-
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
         lastOffsetY = scrollView.contentOffset.y
     }

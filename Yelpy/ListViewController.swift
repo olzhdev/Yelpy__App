@@ -9,13 +9,14 @@ import UIKit
 
 class ListViewController: UIViewController, ListViewProtocol {
     // MARK: - Properties & Elements
-    
     /// Main tableView and SegmentedControl as filter
     private let tableView = UITableView()
     private let segmentedControl = UISegmentedControl(items: ["$", "$$", "$$$", "$$$$"])
     
     var presenter: ListPresenterProtocol!
     
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -30,17 +31,8 @@ class ListViewController: UIViewController, ListViewProtocol {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    func setNavBarTitle(title: String) {
-        self.title = title
-    }
     
-    func success() {
-        tableView.reloadData()
-    }
-    
-    func failure(error: Error) {
-        print(error)
-    }
+    // MARK: - Private methods
     
     /// Fetching new data when price filter criteria changed
     /// - Parameter segmentedControl: SegmentedControl
@@ -102,13 +94,33 @@ class ListViewController: UIViewController, ListViewProtocol {
         
         return headerView
     }
+    
+    
+    // MARK: - ViewProtocol methods
+    func setNavBarTitle(title: String) {
+        self.title = title
+    }
+    
+    func success() {
+        tableView.reloadData()
+    }
+    
+    func failure(error: Error) {
+        print("ListPresenter failure: \(error)")
+    }
 }
 
-extension ListViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+
+// MARK: - Extensions
+
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    /// NumberOfRows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.businessesList.count
     }
     
+    /// CellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BusinessesListItemTableViewCell.identifier) as! BusinessesListItemTableViewCell
         
@@ -117,18 +129,25 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource, UIScro
         return cell
     }
     
+    /// HeightForRowAt
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return BusinessesListItemTableViewCell.prefferedHeight
     }
     
+    /// DidSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let selectedBusinessId = presenter.businessesList[indexPath.row].id
         presenter.didGoToBusinessInfoTapped(businessID: selectedBusinessId)
     }
+}
+
+
+extension ListViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
             ///Show spinner in footer

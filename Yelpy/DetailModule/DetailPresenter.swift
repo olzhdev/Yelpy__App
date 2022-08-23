@@ -34,7 +34,7 @@ protocol DetailPresenterProtocol: AnyObject {
 }
 
 class DetailPresenter: DetailPresenterProtocol {
-    
+    // MARK: - Properties
     weak var view: DetailViewProtocol!
     var APICaller: APICallerProtocol!
     var persistanceManager: PersistanceManagerProtocol!
@@ -45,6 +45,8 @@ class DetailPresenter: DetailPresenterProtocol {
     var images = [String]()
     var businessID: String?
     
+    
+    // MARK: - Init
     required init(view: DetailViewProtocol,
                   APICaller: APICallerProtocol,
                   persistanceManager: PersistanceManagerProtocol,
@@ -57,6 +59,8 @@ class DetailPresenter: DetailPresenterProtocol {
         self.view.showSkeleton(flag: true)
     }
     
+    
+    // MARK: - Methods
     func fetchData() {
         APICaller.getBusinessDetail(forBusinessID: businessID!) { [weak self] result in
             guard let self = self else { return }

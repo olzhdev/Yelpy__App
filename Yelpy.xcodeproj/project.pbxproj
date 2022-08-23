@@ -29,7 +29,6 @@
 		04C8E1BF28ACDF8C00DDA37F /* Yelpy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1BD28ACDF8C00DDA37F /* Yelpy.xcdatamodeld */; };
 		04C8E1C128ACDF9200DDA37F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C8E1C028ACDF9200DDA37F /* Assets.xcassets */; };
 		04C8E1C428ACDF9200DDA37F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C8E1C228ACDF9200DDA37F /* LaunchScreen.storyboard */; };
-		04C8E1CC28ACE26200DDA37F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1CB28ACE26200DDA37F /* Router.swift */; };
 		04C8E1CE28ACE2D400DDA37F /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1CD28ACE2D400DDA37F /* ModuleBuilder.swift */; };
 		04C8E1D128ACE9D000DDA37F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1D028ACE9D000DDA37F /* MainViewController.swift */; };
 		04C8E1D328ACE9E800DDA37F /* LayoutMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1D228ACE9E800DDA37F /* LayoutMainView.swift */; };
@@ -71,7 +70,6 @@
 		04C8E1C028ACDF9200DDA37F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C8E1C328ACDF9200DDA37F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C8E1C528ACDF9200DDA37F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04C8E1CB28ACE26200DDA37F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		04C8E1CD28ACE2D400DDA37F /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		04C8E1D028ACE9D000DDA37F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		04C8E1D228ACE9E800DDA37F /* LayoutMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMainView.swift; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 		0468308928B154EF0055688A /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				04C8E1CB28ACE26200DDA37F /* Router.swift */,
 				0468308028B138890055688A /* AppCoordinator.swift */,
 				0468308628B13E0F0055688A /* MainCoordinator.swift */,
 				046830A228B4DB6D0055688A /* FavoritesCoordinator.swift */,
@@ -166,6 +163,7 @@
 				046830A028B4CAC00055688A /* Managers */,
 				0468308828B154B10055688A /* Builders */,
 				0468308928B154EF0055688A /* Coordinators */,
+				04C8E1E828ACEF2A00DDA37F /* CustomViews */,
 				04C8E1D628ACEA0300DDA37F /* MainModule */,
 				04C8E1E528ACEAE000DDA37F /* ListModule */,
 				04C8E1E028ACEA9700DDA37F /* DetailModule */,
@@ -193,11 +191,10 @@
 			isa = PBXGroup;
 			children = (
 				046830A128B4CACC0055688A /* Model */,
-				04C8E1E828ACEF2A00DDA37F /* Views */,
 				04C8E1D028ACE9D000DDA37F /* MainViewController.swift */,
+				04C8E1D428ACE9F600DDA37F /* MainPresenter.swift */,
 				0468309028B15A4C0055688A /* DefaultArrays.swift */,
 				04C8E1D228ACE9E800DDA37F /* LayoutMainView.swift */,
-				04C8E1D428ACE9F600DDA37F /* MainPresenter.swift */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -214,8 +211,8 @@
 		04C8E1E028ACEA9700DDA37F /* DetailModule */ = {
 			isa = PBXGroup;
 			children = (
-				04C8E1DC28ACEA7B00DDA37F /* DetailPresenter.swift */,
 				04C8E1DE28ACEA9200DDA37F /* DetailViewController.swift */,
+				04C8E1DC28ACEA7B00DDA37F /* DetailPresenter.swift */,
 				0468309928B47CAB0055688A /* LayoutDetailView.swift */,
 			);
 			path = DetailModule;
@@ -230,13 +227,13 @@
 			name = ListModule;
 			sourceTree = "<group>";
 		};
-		04C8E1E828ACEF2A00DDA37F /* Views */ = {
+		04C8E1E828ACEF2A00DDA37F /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				04C8E1E628ACEEEE00DDA37F /* CardView.swift */,
 				04C8E1E928ACEF3800DDA37F /* Cells */,
 			);
-			path = Views;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		04C8E1E928ACEF3800DDA37F /* Cells */ = {
@@ -343,7 +340,6 @@
 				04C8E1BF28ACDF8C00DDA37F /* Yelpy.xcdatamodeld in Sources */,
 				0468309128B15A4C0055688A /* DefaultArrays.swift in Sources */,
 				04C8E1DA28ACEA5B00DDA37F /* FavoritesPresenter.swift in Sources */,
-				04C8E1CC28ACE26200DDA37F /* Router.swift in Sources */,
 				04C8E1EB28ACEF6B00DDA37F /* CuisineTableViewCell.swift in Sources */,
 				04C8E1E228ACEACD00DDA37F /* ListViewController.swift in Sources */,
 				0468308328B13B390055688A /* CoordinatorBuilder.swift in Sources */,

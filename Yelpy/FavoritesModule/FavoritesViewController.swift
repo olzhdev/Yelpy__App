@@ -8,16 +8,21 @@
 import UIKit
 
 class FavoritesViewController: UIViewController, FavoritesViewProtocol {
-
+    // MARK: - Properties & Layout elements
     private let tableView = UITableView()
     var presenter: FavoritesPresenterProtocol!
     
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         configureTableView()
     }
     
+    
+    // MARK: - Private methods
+    /// VC configuration
     private func configureViewController() {
         view.backgroundColor = .secondarySystemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -36,6 +41,8 @@ class FavoritesViewController: UIViewController, FavoritesViewProtocol {
         tableView.backgroundColor = .secondarySystemBackground
     }
     
+    
+    // MARK: - Protocol methods
     func reloadData() {
         tableView.reloadData()
     }
@@ -47,6 +54,7 @@ class FavoritesViewController: UIViewController, FavoritesViewProtocol {
 
 }
 
+// MARK: - Extensions
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -10,10 +10,12 @@ import MapKit
 import SafariServices
 
 class DetailViewController: UIViewController, DetailViewProtocol {
+    // MARK: - Properties & Elements
     lazy var contentView: LayoutBusinessDetailVC = .init()
-
     var presenter: DetailPresenterProtocol!
     
+    
+    // MARK: - Lifecycle
     override func loadView() {
         view = contentView
     }
@@ -44,22 +46,8 @@ class DetailViewController: UIViewController, DetailViewProtocol {
         navigationController?.navigationBar.shadowImage = nil
     }
     
-    func formLayoutProperties(model: Business) {
-        self.contentView.nameLabel.text = model.name
-        self.contentView.categoryLabel.text = model.categories.map({$0.title}).joined(separator: ", ")
-        self.contentView.locationLabel.text = model.location.displayAddress.map({$0}).joined(separator: ", ")
-        self.contentView.ratingLabel.text = model.stringRating
-        self.contentView.phoneLabel.text = model.displayPhone
-        self.contentView.reviewCountLabel.text = model.stringFormattedReviewCount
-        self.contentView.imageView.sd_setImage(with: URL(string: model.imageURL), completed: nil)
-        self.contentView.pageControll.numberOfPages = presenter.images.count
-        self.contentView.photosCollectionView.reloadData()
-    }
     
-    
-    func failure(error: Error) {
-        showAlert(title: "Something went wrong", message: "Please, try again later")
-    }
+    // MARK: - Private methods
     
     /// Calls SafariVC when button tapped
     @objc private func websiteButtonTapped() {
@@ -82,6 +70,10 @@ class DetailViewController: UIViewController, DetailViewProtocol {
         contentView.photosCollectionView.isPagingEnabled = true
     }
     
+    
+    // MARK: - ViewProtocol methods
+    
+    /// Sets coordinates and annotation to business coordinates
     func setMapCoordinatesAndAnnotation(longitude: Double, latitude: Double) {
         contentView.mapView.centerLocation(
             CLLocation(
@@ -96,6 +88,7 @@ class DetailViewController: UIViewController, DetailViewProtocol {
         contentView.mapView.addAnnotation(annotation)
     }
     
+    /// Shows alert by given title and message
     func showAlert(title: String, message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -103,7 +96,26 @@ class DetailViewController: UIViewController, DetailViewProtocol {
         present(alertVC, animated: true)
     }
     
-    /// Shows skeleton depends on flaf
+    /// Sets properties of layout elements (text for label etc)
+    func formLayoutProperties(model: Business) {
+        self.contentView.nameLabel.text = model.name
+        self.contentView.categoryLabel.text = model.categories.map({$0.title}).joined(separator: ", ")
+        self.contentView.locationLabel.text = model.location.displayAddress.map({$0}).joined(separator: ", ")
+        self.contentView.ratingLabel.text = model.stringRating
+        self.contentView.phoneLabel.text = model.displayPhone
+        self.contentView.reviewCountLabel.text = model.stringFormattedReviewCount
+        self.contentView.imageView.sd_setImage(with: URL(string: model.imageURL), completed: nil)
+        self.contentView.pageControll.numberOfPages = presenter.images.count
+        self.contentView.photosCollectionView.reloadData()
+    }
+    
+    
+    func failure(error: Error) {
+        print("DetailPresenter failure: \(error)")
+        showAlert(title: "Something went wrong", message: "Please, try again later")
+    }
+    
+    /// Shows skeleton depends on flag
     /// - Parameter flag: True = show, False = hide
     func showSkeleton(flag: Bool) {
         if flag {
@@ -132,12 +144,16 @@ class DetailViewController: UIViewController, DetailViewProtocol {
 }
 
 
+// MARK: - Extesnions
+
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    /// NumberOfItemsInSection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.images.count
     }
     
+    /// CellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoSliderCollectionViewCell.identifier, for: indexPath) as! PhotoSliderCollectionViewCell
         
@@ -146,6 +162,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    /// SizeForItemAT
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)

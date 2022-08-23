@@ -17,8 +17,8 @@ protocol ModuleBuilderProtocol {
 
 }
 
+/// Object to manage building modules, injecting dependencies
 class ModuleBuilder: ModuleBuilderProtocol {
-    
     
     func buildMainModule() -> MainViewController {
         let view = MainViewController()

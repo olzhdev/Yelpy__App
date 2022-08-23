@@ -23,9 +23,8 @@ protocol APICallerProtocol {
 
 /// Object to manage all API calls
 final class APICaller: APICallerProtocol {
+    // MARK: - Methods
 
-    // MARK: - Public
-    
     /// Get list of businesses for given attributes
     /// - Parameters:
     ///   - category: Category name

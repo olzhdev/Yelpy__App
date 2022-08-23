@@ -26,13 +26,15 @@ protocol FavoritesPresenterProtocol {
 
 
 class FavoritesPresenter: FavoritesPresenterProtocol {
-
+    // MARK: - Properties
     weak var view: FavoritesViewProtocol!
     var persistanceManager: PersistanceManagerProtocol!
     var completionHandler: ((String) -> Void)?
 
     var businessesList: [BusinessItemSD] = []
     
+    
+    // MARK: - Init
     required init(view: FavoritesViewProtocol, persistanceManager: PersistanceManagerProtocol) {
         self.view = view
         self.persistanceManager = persistanceManager
@@ -40,6 +42,8 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
         didFavoritingNotificationReceived()
     }
     
+    
+    // MARK: - Methods
     func fetchFromDatabase() {
         persistanceManager.fetchingBusinessesFromDataBase { [weak self] result in
             guard let self = self else { return }
@@ -53,7 +57,8 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
         }
     }
     
-    func deleteFormDatabase(model: BusinessItemSD, indexPath: Int) {
+    func deleteFormDatabase(model: BusinessItemSD,
+                            indexPath: Int) {
         persistanceManager.deleteBusinessItem(model: model) { result in
             switch result {
             case .success(()):

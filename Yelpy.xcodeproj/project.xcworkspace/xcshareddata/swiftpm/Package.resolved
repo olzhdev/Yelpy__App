@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
+        "state": {
+          "branch": null,
+          "revision": "3e48cb68d8e668d146dc59c73fb98cb628616236",
+          "version": "5.13.2"
+        }
+      },
+      {
+        "package": "SkeletonView",
+        "repositoryURL": "https://github.com/Juanpe/SkeletonView.git",
+        "state": {
+          "branch": null,
+          "revision": "969f06848060ef4ced7ed274e91bb2c749d0ca22",
+          "version": "1.30.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -105,7 +105,7 @@ class DetailViewController: UIViewController, DetailViewProtocol {
     
     /// Shows skeleton depends on flaf
     /// - Parameter flag: True = show, False = hide
-    private func showSkeleton(flag: Bool) {
+    func showSkeleton(flag: Bool) {
         if flag {
             [contentView.nameLabel,
              contentView.categoryLabel,

@@ -121,6 +121,24 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		046830A028B4CAC00055688A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0468309E28B4A34B0055688A /* PersistanceManager.swift */,
+				0468308A28B156030055688A /* APICaller.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		046830A128B4CACC0055688A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0468308E28B156C90055688A /* Business.swift */,
+				0468308C28B156BE0055688A /* BusinessesList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		04C8E1A828ACDF8C00DDA37F = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +160,7 @@
 		04C8E1B328ACDF8C00DDA37F /* Yelpy */ = {
 			isa = PBXGroup;
 			children = (
+				046830A028B4CAC00055688A /* Managers */,
 				0468308828B154B10055688A /* Builders */,
 				0468308928B154EF0055688A /* Coordinators */,
 				04C8E1D628ACEA0300DDA37F /* MainModule */,
@@ -150,10 +169,6 @@
 				04C8E1DB28ACEA6400DDA37F /* FavoritesModule */,
 				04C8E1CF28ACE9A200DDA37F /* Supports */,
 				04C8E1C528ACDF9200DDA37F /* Info.plist */,
-				0468308A28B156030055688A /* APICaller.swift */,
-				0468308E28B156C90055688A /* Business.swift */,
-				0468308C28B156BE0055688A /* BusinessesList.swift */,
-				0468309E28B4A34B0055688A /* PersistanceManager.swift */,
 			);
 			path = Yelpy;
 			sourceTree = "<group>";
@@ -174,6 +189,7 @@
 		04C8E1D628ACEA0300DDA37F /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				046830A128B4CACC0055688A /* Model */,
 				04C8E1E828ACEF2A00DDA37F /* Views */,
 				04C8E1D028ACE9D000DDA37F /* MainViewController.swift */,
 				0468309028B15A4C0055688A /* DefaultArrays.swift */,

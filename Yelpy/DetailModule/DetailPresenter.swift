@@ -12,6 +12,7 @@ protocol DetailViewProtocol: AnyObject {
     func formLayoutProperties(model: Business)
     func setMapCoordinatesAndAnnotation(longitude: Double, latitude: Double)
     func showAlert(title: String, message: String)
+    func showSkeleton(flag: Bool)
 }
 
 protocol DetailPresenterProtocol: AnyObject {
@@ -53,6 +54,7 @@ class DetailPresenter: DetailPresenterProtocol {
         self.persistanceManager = persistanceManager
         self.businessID = businessID
         fetchData()
+        self.view.showSkeleton(flag: true)
     }
     
     func fetchData() {
@@ -64,6 +66,9 @@ class DetailPresenter: DetailPresenterProtocol {
                 case .success(let business):
                     self.model = business
                     self.images = business.photos.shuffled()
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                        self.view.showSkeleton(flag: false)
+                    }
                     self.view.formLayoutProperties(model: business)
                     self.view.setMapCoordinatesAndAnnotation(longitude: business.coordinates.longitude, latitude: business.coordinates.latitude)
                     self.businessURL = business.url

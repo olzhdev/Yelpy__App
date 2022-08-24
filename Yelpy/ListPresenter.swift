@@ -39,6 +39,7 @@ protocol ListPresenterProtocol {
     var completionHandler: ((String) -> Void)? { get set }
 }
 
+
 class ListPresenter: ListPresenterProtocol {
     // MARK: - Properties
     weak var view: ListViewProtocol!

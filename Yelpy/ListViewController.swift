@@ -74,19 +74,6 @@ class ListViewController: UIViewController, ListViewProtocol {
         tableView.tableHeaderView = tableViewHeaderView()
     }
     
-    /// Shows loading spinner at footer when new data fetched
-    /// - Returns: footerView as UIView
-    private func showLoadingSpinnerInFooter() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
-        
-        let spinner = UIActivityIndicatorView()
-        spinner.center = footerView.center
-        footerView.addSubview(spinner)
-        spinner.startAnimating()
-        
-        return footerView
-    }
-    
     /// Shows filter as segmentedControl in headerView
     /// - Returns: segmentedControl as UIView
     private func tableViewHeaderView() -> UIView {
@@ -113,31 +100,46 @@ class ListViewController: UIViewController, ListViewProtocol {
     }
     
     func showingSpinner(flag: Bool) {
-        DispatchQueue.main.async {
-            self.loadingView = UIView()
-            self.loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
-            self.loadingView.center = self.view.center
-            self.loadingView.backgroundColor = UIColor(red: 0.26, green: 0.26, blue: 0.26, alpha: 0.5)
-            self.loadingView.alpha = 0.7
-            self.loadingView.clipsToBounds = true
-            self.loadingView.layer.cornerRadius = 10
-            
-            self.spinner.frame = CGRect(x: 0.0, y: 0, width: 80.0, height: 80.0)
-            self.spinner.center = CGPoint(x: self.loadingView.bounds.size.width / 2, y: self.loadingView.bounds.size.height / 2)
-            
-            self.loadingView.addSubview(self.spinner)
-            self.view.addSubview(self.loadingView)
-            self.spinner.startAnimating()
+        if flag {
+            DispatchQueue.main.async {
+                self.loadingView = UIView()
+                self.loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+                self.loadingView.center = self.view.center
+                self.loadingView.backgroundColor = UIColor(red: 0.26, green: 0.26, blue: 0.26, alpha: 0.5)
+                self.loadingView.alpha = 0.7
+                self.loadingView.clipsToBounds = true
+                self.loadingView.layer.cornerRadius = 10
+                
+                self.spinner.frame = CGRect(x: 0.0, y: 0, width: 80.0, height: 80.0)
+                self.spinner.center = CGPoint(x: self.loadingView.bounds.size.width / 2, y: self.loadingView.bounds.size.height / 2)
+                
+                self.loadingView.addSubview(self.spinner)
+                self.view.addSubview(self.loadingView)
+                self.spinner.startAnimating()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                self.loadingView.removeFromSuperview()
+            }
         }
-    } else {
-        DispatchQueue.main.async {
-            self.spinner.stopAnimating()
-            self.loadingView.removeFromSuperview()
+    }
+    
+    func showingSpinnerInFooter(flag: Bool) {
+        if flag {
+            let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
+            
+            let spinner = UIActivityIndicatorView()
+            spinner.center = footerView.center
+            footerView.addSubview(spinner)
+            spinner.startAnimating()
+            
+            tableView.tableFooterView = footerView
+        } else {
+            tableView.tableFooterView = nil
         }
     }
 }
-}
-
 
 // MARK: - Extensions
 
@@ -178,9 +180,9 @@ extension ListViewController: UIScrollViewDelegate {
         
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
-            ///Show spinner in footer
-            self.tableView.tableFooterView = showLoadingSpinnerInFooter()
-
+            
+            showingSpinnerInFooter(flag: true)
+            
             if presenter.offset > presenter.remaining {
                 presenter.offset += presenter.remaining
             }
@@ -192,3 +194,4 @@ extension ListViewController: UIScrollViewDelegate {
         }
     }
 }
+

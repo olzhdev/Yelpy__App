@@ -12,6 +12,7 @@ protocol ListViewProtocol: AnyObject {
     func success()
     func failure(error: Error)
     func showingSpinner(flag: Bool)
+    func showingSpinnerInFooter(flag: Bool)
 }
 
 protocol ListPresenterProtocol: AnyObject {
@@ -92,7 +93,6 @@ class ListPresenter: ListPresenterProtocol {
             }
         }
     }
-
     
     func didSegmentedValueChanged(selectedIndex: String) {
         fetchData(forCategory: APIAttribute!, count: count, offset: 0, price: selectedIndex)
@@ -109,7 +109,7 @@ class ListPresenter: ListPresenterProtocol {
                     self.remaining = businessesList.total - self.count
                     
                     DispatchQueue.main.async {
-                        ///Remove spinner in footer
+                        self.view.showingSpinnerInFooter(flag: false)
                     }
                     
                     self.view.success()

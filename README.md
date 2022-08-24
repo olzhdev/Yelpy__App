@@ -31,8 +31,8 @@ Yelpy is an application for discovering various restaurants and cafes by categor
 * Coordinator, Module (view + presenter + managers) builders for creating individual entities, injecting dependencies.
 <p align="center">
 <img height=500 width=800 src="https://user-images.githubusercontent.com/53051473/186411868-19dfd330-09dc-4e23-ab8d-0b6f7cac2e73.png">
-<sup>The scheme may be slightly different because the functionality and other modules are added.</sup>
 </p>
+<sup>The scheme may be slightly different because the functionality and other modules are added.</sup>
 
 ## Plans
 

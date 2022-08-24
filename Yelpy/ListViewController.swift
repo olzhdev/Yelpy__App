@@ -98,7 +98,7 @@ class ListViewController: UIViewController, ListViewProtocol {
     func failure(error: Error) {
         print("ListPresenter failure: \(error)")
     }
-    
+
     func showingSpinner(flag: Bool) {
         if flag {
             DispatchQueue.main.async {
@@ -171,6 +171,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedBusinessId = presenter.businessesList[indexPath.row].id
         presenter.didGoToBusinessInfoTapped(businessID: selectedBusinessId)
     }
+    
+
 }
 
 

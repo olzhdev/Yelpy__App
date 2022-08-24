@@ -15,7 +15,7 @@ protocol ListViewProtocol: AnyObject {
     func showingSpinnerInFooter(flag: Bool)
 }
 
-protocol ListPresenterProtocol: AnyObject {
+protocol ListPresenterProtocol {
     init(view: ListViewProtocol,
          APICaller: APICallerProtocol,
          categoryName: String,

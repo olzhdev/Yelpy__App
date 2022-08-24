@@ -15,7 +15,7 @@ protocol DetailViewProtocol: AnyObject {
     func showSkeleton(flag: Bool)
 }
 
-protocol DetailPresenterProtocol: AnyObject {
+protocol DetailPresenterProtocol {
     init(view: DetailViewProtocol,
          APICaller: APICallerProtocol,
          persistanceManager: PersistanceManagerProtocol,

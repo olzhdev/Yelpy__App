@@ -12,7 +12,7 @@ protocol MainViewProtocol: AnyObject {
     func failure(error: Error)
 }
 
-protocol MainPresenterProtocol: AnyObject {
+protocol MainPresenterProtocol {
     init(view: MainViewProtocol,
          APICaller: APICallerProtocol)
     func fetchData()

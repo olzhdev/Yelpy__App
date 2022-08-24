@@ -154,6 +154,15 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		046830AE28B659F20055688A /* ListModule */ = {
+			isa = PBXGroup;
+			children = (
+				04C8E1E328ACEAD800DDA37F /* ListPresenter.swift */,
+				04C8E1E128ACEACD00DDA37F /* ListViewController.swift */,
+			);
+			path = ListModule;
+			sourceTree = "<group>";
+		};
 		04C8E1A828ACDF8C00DDA37F = {
 			isa = PBXGroup;
 			children = (
@@ -179,11 +188,11 @@
 				0468308928B154EF0055688A /* Coordinators */,
 				04C8E1E828ACEF2A00DDA37F /* CustomViews */,
 				04C8E1D628ACEA0300DDA37F /* MainModule */,
-				04C8E1E528ACEAE000DDA37F /* ListModule */,
 				04C8E1E028ACEA9700DDA37F /* DetailModule */,
 				04C8E1DB28ACEA6400DDA37F /* FavoritesModule */,
 				04C8E1CF28ACE9A200DDA37F /* Supports */,
 				04C8E1C528ACDF9200DDA37F /* Info.plist */,
+				046830AE28B659F20055688A /* ListModule */,
 			);
 			path = Yelpy;
 			sourceTree = "<group>";
@@ -231,15 +240,6 @@
 				0468309928B47CAB0055688A /* LayoutDetailView.swift */,
 			);
 			path = DetailModule;
-			sourceTree = "<group>";
-		};
-		04C8E1E528ACEAE000DDA37F /* ListModule */ = {
-			isa = PBXGroup;
-			children = (
-				04C8E1E328ACEAD800DDA37F /* ListPresenter.swift */,
-				04C8E1E128ACEACD00DDA37F /* ListViewController.swift */,
-			);
-			name = ListModule;
 			sourceTree = "<group>";
 		};
 		04C8E1E828ACEF2A00DDA37F /* CustomViews */ = {

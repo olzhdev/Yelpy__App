@@ -11,6 +11,7 @@ protocol ListViewProtocol: AnyObject {
     func setNavBarTitle(title: String)
     func success()
     func failure(error: Error)
+    func showingSpinner(flag: Bool)
 }
 
 protocol ListPresenterProtocol: AnyObject {
@@ -70,7 +71,8 @@ class ListPresenter: ListPresenterProtocol {
     
     // MARK: - Methods
     func fetchData(forCategory: String, count: Int, offset: Int, price: String) {
-        ///Show spinner
+        self.view.showingSpinner(flag: true)
+        
         APICaller.getBusinessList(forCategory: forCategory, count: count, offset: offset, price: price) { [weak self] result in
             guard let self = self else { return }
             
@@ -79,9 +81,9 @@ class ListPresenter: ListPresenterProtocol {
                 case .success(let businessesList):
                     self.businessesList = businessesList.businesses
                     self.remaining = businessesList.total - self.count
-                    DispatchQueue.main.async {
-                        ///Remove spinner
-                    }
+                    
+                    self.view.showingSpinner(flag: false)
+                    
                     self.view.success()
                 case .failure(let error):
                     self.view.failure(error: error)
@@ -104,9 +106,11 @@ class ListPresenter: ListPresenterProtocol {
                 case .success(let businessesList):
                     self.businessesList.append(contentsOf: businessesList.businesses)
                     self.remaining = businessesList.total - self.count
+                    
                     DispatchQueue.main.async {
-                        ///Remove spinner
+                        ///Remove spinner in footer
                     }
+                    
                     self.view.success()
                 case .failure(let error):
                     self.view.failure(error: error)

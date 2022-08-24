@@ -29,6 +29,7 @@ protocol MainPresenterProtocol {
 
 }
 
+
 class MainPresenter: MainPresenterProtocol {
     // MARK: - Properties
     weak var view: MainViewProtocol!

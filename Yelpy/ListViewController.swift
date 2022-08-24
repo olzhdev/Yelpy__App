@@ -108,6 +108,14 @@ class ListViewController: UIViewController, ListViewProtocol {
     func failure(error: Error) {
         print("ListPresenter failure: \(error)")
     }
+    
+    func showingSpinner(flag: Bool) {
+        if flag {
+            self.showSpinner(onView: self.view)
+        } else {
+            self.removeSpinner()
+        }
+    }
 }
 
 

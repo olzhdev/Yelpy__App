@@ -20,7 +20,7 @@ protocol AppCoordinatorProtocol: AppCoordinatorMain {
 }
 
 /// Starting coordinator of application
-class AppCoordinator: AppCoordinatorProtocol {
+final class AppCoordinator: AppCoordinatorProtocol {
     
     var tabBarController: UITabBarController?
     var navController1: UINavigationController?
@@ -62,8 +62,4 @@ class AppCoordinator: AppCoordinatorProtocol {
         
         return favoritesCoordinator.startFirstView()
     }
-    
-
-    
-    
 }

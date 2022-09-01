@@ -30,7 +30,7 @@ protocol MainPresenterProtocol {
 }
 
 
-class MainPresenter: MainPresenterProtocol {
+final class MainPresenter: MainPresenterProtocol {
     // MARK: - Properties
     weak var view: MainViewProtocol!
     var APICaller: APICallerProtocol!
@@ -84,7 +84,4 @@ class MainPresenter: MainPresenterProtocol {
         /// Go to buisnesses list
         completionHandler2?(businessID)
     }
-
-
-    
 }

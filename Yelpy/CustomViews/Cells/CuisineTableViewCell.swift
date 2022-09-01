@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CuisineCollectionViewCell: UICollectionViewCell {
+final class CuisineCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties & Elements
 
     static let identifier = "CategoryCollectionViewCell"

@@ -8,7 +8,7 @@
 import UIKit
 
 /// Coordinator of MainFlow
-class MainCoordinator: Coordinator {
+final class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController?
     var moduleBuilder: ModuleBuilderProtocol?
@@ -28,7 +28,8 @@ class MainCoordinator: Coordinator {
     func startFirstView() -> UINavigationController? {
         guard let mainModule = moduleBuilder?.buildMainModule() else { return nil }
         
-        mainModule.presenter.completionHandler = { (categoryName, APIAttribute) in
+        mainModule.presenter.completionHandler = { [weak self] (categoryName, APIAttribute) in
+            guard let self = self else { return }
             self.categoryName = categoryName
             self.APIAttribute = APIAttribute
             self.showListView()
@@ -53,6 +54,7 @@ class MainCoordinator: Coordinator {
             self.businessesID = businessesID
             self.showDetailView()
         }
+        
         navigationController?.pushViewController(listModule, animated: true)
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 /// All default-hardcoded categories for HomeVC
-struct DefaultArrays {
+enum DefaultArrays {
     static let cuisineDefaultArray = [
         "Mexican": ["APIAttribute": "mexican",
                     "imageName": "Mexican"],

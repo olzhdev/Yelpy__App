@@ -6,7 +6,7 @@
 
 import UIKit
 
-class FoodTypeCollectionViewCell: UICollectionViewCell {
+final class FoodTypeCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties & Elements
     
     static let identifier = "FoodTypeCollectionViewCell"
@@ -16,7 +16,6 @@ class FoodTypeCollectionViewCell: UICollectionViewCell {
     private let label = UILabel()
     private let image = UIImageView()
     private let tintView = UIView()
-    
     
     struct ViewModel {
         let label: String

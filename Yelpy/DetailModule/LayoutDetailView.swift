@@ -10,7 +10,7 @@ import SkeletonView
 import MapKit
 
 /// Layout of BusinessDetailVC, element configs and constraints
-class LayoutBusinessDetailVC: UIView {
+final class LayoutBusinessDetailVC: UIView {
     
     // MARK: - Layout Elements
     /// Root Elements

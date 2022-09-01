@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class TrendingCollectionViewCell: UICollectionViewCell {
+final class TrendingCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Layout elements and properties
     

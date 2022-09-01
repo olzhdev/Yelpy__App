@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommonCollectionViewCell: UICollectionViewCell {
+final class CommonCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties & Elements
 

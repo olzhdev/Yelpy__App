@@ -81,11 +81,8 @@ class MainViewController: UIViewController, MainViewProtocol {
         locationButton.setTitleColor(.secondaryLabel, for: .normal)
         locationButton.setAttributedTitle("Current location:\nNew York City ˅" .getAttributedBoldText(text: "New York City ˅"), for: .normal)
         locationButton.titleLabel?.font = UIFont(name: "AvenirNextLTPro-Regular", size: 15)
-
-        let stackView = UIStackView(arrangedSubviews: [locationButton])
-        stackView.alignment = .center
-
-        navigationItem.titleView = stackView
+        
+        navigationItem.titleView = locationButton
     }
     
     @objc private func logoButton() {}
@@ -192,7 +189,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             guard let selectedBusinessID = presenter.trendingArray?[indexPath.row].id else { return }
             
-            
             presenter.didGoToBusinessInfoTapped(businessID: selectedBusinessID)
         default:
             break
@@ -215,7 +211,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize()
         }
     }
-
 }
 
 extension MainViewController: UIScrollViewDelegate {

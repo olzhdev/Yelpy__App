@@ -25,7 +25,7 @@ protocol FavoritesPresenterProtocol {
 }
 
 
-class FavoritesPresenter: FavoritesPresenterProtocol {
+final class FavoritesPresenter: FavoritesPresenterProtocol {
     // MARK: - Properties
     weak var view: FavoritesViewProtocol!
     var persistanceManager: PersistanceManagerProtocol!

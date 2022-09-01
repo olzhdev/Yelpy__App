@@ -40,7 +40,7 @@ protocol ListPresenterProtocol {
 }
 
 
-class ListPresenter: ListPresenterProtocol {
+final class ListPresenter: ListPresenterProtocol {
     // MARK: - Properties
     weak var view: ListViewProtocol!
     var APICaller: APICallerProtocol!
@@ -119,9 +119,9 @@ class ListPresenter: ListPresenterProtocol {
                     print(error)
                 }
             }
-        }    }
+        }
+    }
 
-    
     func setNavBarTitle() {
         view.setNavBarTitle(title: categoryName!)
     }

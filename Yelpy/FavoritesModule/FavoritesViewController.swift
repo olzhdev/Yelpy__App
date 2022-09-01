@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController, FavoritesViewProtocol {
+final class FavoritesViewController: UIViewController, FavoritesViewProtocol {
     // MARK: - Properties & Layout elements
     private let tableView = UITableView()
     var presenter: FavoritesPresenterProtocol!

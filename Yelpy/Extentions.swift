@@ -44,34 +44,6 @@ extension String {
     }
 }
 
-var vSpinner : UIView?
-extension UIViewController {
-    /// Shows spinner on view
-    func showSpinner(onView : UIView) {
-        
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = .systemBackground
-        spinnerView.alpha = 0.5
-        
-        let ai = UIActivityIndicatorView.init(style: .large)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
-        DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
-        }
-        vSpinner = spinnerView
-    }
-    
-    /// Remove spinner
-    func removeSpinner() {
-        DispatchQueue.main.async {
-            vSpinner?.removeFromSuperview()
-            vSpinner = nil
-        }
-    }
-}
 
 extension MKMapView {
     

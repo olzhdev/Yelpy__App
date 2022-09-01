@@ -12,7 +12,7 @@ protocol CardViewDelegate: AnyObject {
 }
 
 /// Custom CardView with CollectionView to add in HomeVC
-class CardView: UIView {
+final class CardView: UIView {
     
     // MARK: - Properties & Elements
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController, ListViewProtocol {
+final class ListViewController: UIViewController, ListViewProtocol {
     // MARK: - Properties & Elements
     /// Main tableView and SegmentedControl as filter
     private let tableView = UITableView()
@@ -100,8 +100,8 @@ class ListViewController: UIViewController, ListViewProtocol {
     }
 
     func showingSpinner(flag: Bool) {
-        if flag {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            if flag {
                 self.loadingView = UIView()
                 self.loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
                 self.loadingView.center = self.view.center
@@ -116,9 +116,7 @@ class ListViewController: UIViewController, ListViewProtocol {
                 self.loadingView.addSubview(self.spinner)
                 self.view.addSubview(self.loadingView)
                 self.spinner.startAnimating()
-            }
-        } else {
-            DispatchQueue.main.async {
+            } else {
                 self.spinner.stopAnimating()
                 self.loadingView.removeFromSuperview()
             }
@@ -171,8 +169,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedBusinessId = presenter.businessesList[indexPath.row].id
         presenter.didGoToBusinessInfoTapped(businessID: selectedBusinessId)
     }
-    
-
 }
 
 

@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import SafariServices
 
-class DetailViewController: UIViewController, DetailViewProtocol {
+final class DetailViewController: UIViewController, DetailViewProtocol {
     // MARK: - Properties & Elements
     lazy var contentView: LayoutBusinessDetailVC = .init()
     var presenter: DetailPresenterProtocol!

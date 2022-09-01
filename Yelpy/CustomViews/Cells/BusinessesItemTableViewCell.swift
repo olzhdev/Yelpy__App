@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BusinessesListItemTableViewCell: UITableViewCell {
+final class BusinessesListItemTableViewCell: UITableViewCell {
     
     // MARK: - Properties & Elements
     
@@ -102,6 +102,7 @@ class BusinessesListItemTableViewCell: UITableViewCell {
         clipsToBounds = true
         
         nameLabel.font = UIFont(name: "AvenirNextLTPro-Bold", size: 23)
+        nameLabel.isOpaque = true
         
         categoryLabel.textColor = .secondaryLabel
         categoryLabel.font = UIFont(name: "AvenirNextLTPro-Regular", size: 19)

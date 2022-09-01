@@ -33,7 +33,7 @@ protocol DetailPresenterProtocol {
     var completionHandler: (() -> Void)? { get set }
 }
 
-class DetailPresenter: DetailPresenterProtocol {
+final class DetailPresenter: DetailPresenterProtocol {
     // MARK: - Properties
     weak var view: DetailViewProtocol!
     var APICaller: APICallerProtocol!

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 ///For coordinators
-protocol Coordinator: AnyObject {
+protocol Coordinator {
     var navigationController: UINavigationController? { get set }
     var moduleBuilder: ModuleBuilderProtocol? { get set }
     var flowCompletionHandler: (() -> ())? { get set }
@@ -22,7 +22,7 @@ protocol FlowController {
     var completionHandler: ((T) -> ())? { get set }
 }
 
-class CoordinatorBuilder {
+final class CoordinatorBuilder {
     
     func setAppCoordinator(navController1: UINavigationController,
                            navController2: UINavigationController,

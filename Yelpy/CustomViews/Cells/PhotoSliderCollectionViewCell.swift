@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class PhotoSliderCollectionViewCell: UICollectionViewCell {
+final class PhotoSliderCollectionViewCell: UICollectionViewCell {
     // MARK: - Layout elements and properties
     
     static let identifier = "PhotoSliderCollectionViewCell"

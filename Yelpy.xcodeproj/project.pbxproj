@@ -47,7 +47,6 @@
 		04C8E1ED28ACF04300DDA37F /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1EC28ACF04300DDA37F /* Extentions.swift */; };
 		04C8E1EF28ACF08300DDA37F /* CommonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1EE28ACF08300DDA37F /* CommonTableViewCell.swift */; };
 		04C8E1F128ACF0A200DDA37F /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1F028ACF0A200DDA37F /* TrendingTableViewCell.swift */; };
-		04C8E1F328ACF0C300DDA37F /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1F228ACF0C300DDA37F /* ListItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,7 +89,6 @@
 		04C8E1EC28ACF04300DDA37F /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		04C8E1EE28ACF08300DDA37F /* CommonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableViewCell.swift; sourceTree = "<group>"; };
 		04C8E1F028ACF0A200DDA37F /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
-		04C8E1F228ACF0C300DDA37F /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,11 +186,11 @@
 				0468308928B154EF0055688A /* Coordinators */,
 				04C8E1E828ACEF2A00DDA37F /* CustomViews */,
 				04C8E1D628ACEA0300DDA37F /* MainModule */,
+				046830AE28B659F20055688A /* ListModule */,
 				04C8E1E028ACEA9700DDA37F /* DetailModule */,
 				04C8E1DB28ACEA6400DDA37F /* FavoritesModule */,
 				04C8E1CF28ACE9A200DDA37F /* Supports */,
 				04C8E1C528ACDF9200DDA37F /* Info.plist */,
-				046830AE28B659F20055688A /* ListModule */,
 			);
 			path = Yelpy;
 			sourceTree = "<group>";
@@ -257,7 +255,6 @@
 				04C8E1EA28ACEF6B00DDA37F /* CuisineTableViewCell.swift */,
 				04C8E1EE28ACF08300DDA37F /* CommonTableViewCell.swift */,
 				04C8E1F028ACF0A200DDA37F /* TrendingTableViewCell.swift */,
-				04C8E1F228ACF0C300DDA37F /* ListItemTableViewCell.swift */,
 				0459F61228ACF12B00B48125 /* FoodTypeTableViewCell.swift */,
 				0459F61428ACF15900B48125 /* PhotoSliderCollectionViewCell.swift */,
 				0468309728B2A3AD0055688A /* BusinessesItemTableViewCell.swift */,
@@ -350,7 +347,6 @@
 				0468309F28B4A34B0055688A /* PersistanceManager.swift in Sources */,
 				04C8E1F128ACF0A200DDA37F /* TrendingTableViewCell.swift in Sources */,
 				04C8E1DF28ACEA9200DDA37F /* DetailViewController.swift in Sources */,
-				04C8E1F328ACF0C300DDA37F /* ListItemTableViewCell.swift in Sources */,
 				04C8E1D128ACE9D000DDA37F /* MainViewController.swift in Sources */,
 				04C8E1B928ACDF8C00DDA37F /* ViewController.swift in Sources */,
 				0459F61328ACF12B00B48125 /* FoodTypeTableViewCell.swift in Sources */,

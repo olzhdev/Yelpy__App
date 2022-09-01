@@ -8,7 +8,7 @@
 import UIKit
 
 /// Coordinator of FavoritesFlow
-class FavoritesCoordinator: Coordinator {
+final class FavoritesCoordinator: Coordinator {
     
     var navigationController: UINavigationController?
     var moduleBuilder: ModuleBuilderProtocol?
@@ -26,9 +26,9 @@ class FavoritesCoordinator: Coordinator {
     func startFirstView() -> UINavigationController? {
         guard let favoritesModule = moduleBuilder?.buildFavoritesModule() else { return nil }
         
-        favoritesModule.presenter.completionHandler = { businessesID in
-            self.businessesID = businessesID
-            self.showDetailView()
+        favoritesModule.presenter.completionHandler = { [weak self] businessesID in
+            self?.businessesID = businessesID
+            self?.showDetailView()
         }
         
         navigationController?.viewControllers = [favoritesModule]

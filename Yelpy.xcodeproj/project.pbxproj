@@ -12,7 +12,7 @@
 		0468308128B138890055688A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468308028B138890055688A /* AppCoordinator.swift */; };
 		0468308328B13B390055688A /* CoordinatorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468308228B13B390055688A /* CoordinatorBuilder.swift */; };
 		0468308728B13E0F0055688A /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468308628B13E0F0055688A /* MainCoordinator.swift */; };
-		0468308B28B156030055688A /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468308A28B156030055688A /* APICaller.swift */; };
+		0468308B28B156030055688A /* APICallerDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468308A28B156030055688A /* APICallerDefault.swift */; };
 		0468308D28B156BE0055688A /* BusinessesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468308C28B156BE0055688A /* BusinessesList.swift */; };
 		0468308F28B156C90055688A /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468308E28B156C90055688A /* Business.swift */; };
 		0468309128B15A4C0055688A /* DefaultArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468309028B15A4C0055688A /* DefaultArrays.swift */; };
@@ -47,6 +47,8 @@
 		04C8E1ED28ACF04300DDA37F /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1EC28ACF04300DDA37F /* Extentions.swift */; };
 		04C8E1EF28ACF08300DDA37F /* CommonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1EE28ACF08300DDA37F /* CommonTableViewCell.swift */; };
 		04C8E1F128ACF0A200DDA37F /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1F028ACF0A200DDA37F /* TrendingTableViewCell.swift */; };
+		04D2DD1C28CDF84800D8DA49 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04D2DD1B28CDF84800D8DA49 /* Alamofire */; };
+		04D2DD1E28CDF92200D8DA49 /* APICallerAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2DD1D28CDF92200D8DA49 /* APICallerAlamofire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +57,7 @@
 		0468308028B138890055688A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0468308228B13B390055688A /* CoordinatorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorBuilder.swift; sourceTree = "<group>"; };
 		0468308628B13E0F0055688A /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		0468308A28B156030055688A /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		0468308A28B156030055688A /* APICallerDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallerDefault.swift; sourceTree = "<group>"; };
 		0468308C28B156BE0055688A /* BusinessesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessesList.swift; sourceTree = "<group>"; };
 		0468308E28B156C90055688A /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		0468309028B15A4C0055688A /* DefaultArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultArrays.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		04C8E1EC28ACF04300DDA37F /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		04C8E1EE28ACF08300DDA37F /* CommonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableViewCell.swift; sourceTree = "<group>"; };
 		04C8E1F028ACF0A200DDA37F /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
+		04D2DD1D28CDF92200D8DA49 /* APICallerAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallerAlamofire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0468309628B25BBD0055688A /* SDWebImageMapKit in Frameworks */,
+				04D2DD1C28CDF84800D8DA49 /* Alamofire in Frameworks */,
 				0468309D28B47D980055688A /* SkeletonView in Frameworks */,
 				0468309428B25BBD0055688A /* SDWebImage in Frameworks */,
 			);
@@ -128,7 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				0468309E28B4A34B0055688A /* PersistanceManager.swift */,
-				0468308A28B156030055688A /* APICaller.swift */,
+				0468308A28B156030055688A /* APICallerDefault.swift */,
+				04D2DD1D28CDF92200D8DA49 /* APICallerAlamofire.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				0468309328B25BBD0055688A /* SDWebImage */,
 				0468309528B25BBD0055688A /* SDWebImageMapKit */,
 				0468309C28B47D980055688A /* SkeletonView */,
+				04D2DD1B28CDF84800D8DA49 /* Alamofire */,
 			);
 			productName = Yelpy;
 			productReference = 04C8E1B128ACDF8C00DDA37F /* Yelpy.app */;
@@ -314,6 +320,7 @@
 			packageReferences = (
 				0468309228B25BBD0055688A /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				0468309B28B47D980055688A /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				04D2DD1A28CDF84800D8DA49 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 04C8E1B228ACDF8C00DDA37F /* Products */;
 			projectDirPath = "";
@@ -368,12 +375,13 @@
 				04C8E1B728ACDF8C00DDA37F /* SceneDelegate.swift in Sources */,
 				04C8E1EF28ACF08300DDA37F /* CommonTableViewCell.swift in Sources */,
 				04C8E1D828ACEA2F00DDA37F /* FavoritesViewController.swift in Sources */,
-				0468308B28B156030055688A /* APICaller.swift in Sources */,
+				0468308B28B156030055688A /* APICallerDefault.swift in Sources */,
 				0468308D28B156BE0055688A /* BusinessesList.swift in Sources */,
 				04C8E1CE28ACE2D400DDA37F /* ModuleBuilder.swift in Sources */,
 				0468308728B13E0F0055688A /* MainCoordinator.swift in Sources */,
 				04C8E1E728ACEEEE00DDA37F /* CardView.swift in Sources */,
 				0468309A28B47CAB0055688A /* LayoutDetailView.swift in Sources */,
+				04D2DD1E28CDF92200D8DA49 /* APICallerAlamofire.swift in Sources */,
 				046830A328B4DB6D0055688A /* FavoritesCoordinator.swift in Sources */,
 				04C8E1DD28ACEA7B00DDA37F /* DetailPresenter.swift in Sources */,
 			);
@@ -601,6 +609,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		04D2DD1A28CDF84800D8DA49 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -618,6 +634,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0468309B28B47D980055688A /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
+		};
+		04D2DD1B28CDF84800D8DA49 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04D2DD1A28CDF84800D8DA49 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -22,7 +22,7 @@ protocol APICallerProtocol {
 
 
 /// Object to manage all API calls
-final class APICaller: APICallerProtocol {
+final class APICallerDefault: APICallerProtocol {
     // MARK: - Methods
 
     /// Get list of businesses for given attributes
@@ -86,13 +86,14 @@ final class APICaller: APICallerProtocol {
     private enum APIError: Error {
         case invalidUrl
         case noDataReturned
+        case decodingError
     }
     
     /// Forming url from attributes and returns request
     /// - Parameters:
     ///   - endpoint: Endpoint
     ///   - queryParams: Given attributes
-    /// - Returns: URLRequest
+    /// - Returns: URLRequest: [...businesses/search?location=NYC&categories=bars] or [...businesses/id]
     private func requestWithURL(
         for endpoint: Endpoint,
         queryParams: [String:String] = [:]) -> URLRequest?
@@ -151,7 +152,7 @@ final class APICaller: APICallerProtocol {
                 completion(.success(result))
             }
             catch {
-                completion(.failure(error))
+                completion(.failure(APIError.decodingError))
             }
         }
         task.resume()

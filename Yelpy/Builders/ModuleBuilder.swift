@@ -22,7 +22,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     
     func buildMainModule() -> MainViewController {
         let view = MainViewController()
-        let APICaller = APICaller()
+        let APICaller = APICallerDefault()
 
         let presenter = MainPresenter(view: view, APICaller: APICaller)
         view.presenter = presenter
@@ -32,7 +32,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     
     func buildListModule(categoryName: String, APIAttribute: String) -> ListViewController {
         let view = ListViewController()
-        let APICaller = APICaller()
+        let APICaller = APICallerDefault()
         
         let presenter = ListPresenter(view: view, APICaller: APICaller, categoryName: categoryName, APIAttribute: APIAttribute)
         view.presenter = presenter
@@ -42,7 +42,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     
     func buildDetailModule(businessID: String) -> DetailViewController {
         let view = DetailViewController()
-        let APICaller = APICaller()
+        let APICaller = APICallerAlamofire()
         let persistanceManager = PersistanceManager()
         
         let presenter = DetailPresenter(view: view, APICaller: APICaller, persistanceManager: persistanceManager, businessID: businessID)

@@ -17,10 +17,10 @@ Yelpy is an application for discovering various restaurants and cafes by categor
 
 * Fully programmatic UI (Autolayout).
 * MVP+C.
-* External libraries: SDWebImage, SkeletonView.
+* External libraries: SDWebImage, SkeletonView, Alamofire
 * MapKit.
 * JSON parsing using Codable.
-* HTTP requests with URLSession.
+* Network requests using both default URLSession and Alamofire library.
 * Data persistence using CoreData.
 * REST API (YelpFusion API).
 

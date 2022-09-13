@@ -55,6 +55,10 @@ final class MainCoordinator: Coordinator {
             self.showDetailView()
         }
         
+        listModule.presenter.completionHandler2 = {
+            self.showFilterView()
+        }
+        
         navigationController?.pushViewController(listModule, animated: true)
     }
     
@@ -64,5 +68,19 @@ final class MainCoordinator: Coordinator {
         detailModule.presenter.completionHandler = {}
         
         navigationController?.pushViewController(detailModule, animated: true)
+    }
+    
+    func showFilterView() {
+        guard let filterModule = moduleBuilder?.buildFilterModule() else { return }
+        
+        filterModule.presenter.completionHandler = { [weak self] in
+            self?.dismissFilterView()
+        }
+        
+        navigationController?.present(filterModule, animated: true)
+    }
+    
+    func dismissFilterView() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 }

@@ -15,6 +15,7 @@ final class APICallerAlamofire: APICallerProtocol {
                          count: Int,
                          offset: Int,
                          price: String,
+                         attributes: String,
                          completion: @escaping (Result<BusinessesList, Error>) -> Void)
     {
         let URL = formURL(for: .search,
@@ -22,7 +23,8 @@ final class APICallerAlamofire: APICallerProtocol {
                                            "categories": category,
                                            "limit": String(count),
                                            "price": price,
-                                           "offset": String(offset),])
+                                           "offset": String(offset),
+                                           "attributes": attributes])
         doRequest(url: URL, expecting: BusinessesList.self, completion: completion)
     }
     
@@ -68,7 +70,7 @@ final class APICallerAlamofire: APICallerProtocol {
 
         return urlString
     }
-    
+ 
 
     private func doRequest<T: Codable>(url: String,
                                       expecting: T.Type,

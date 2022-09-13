@@ -13,6 +13,7 @@ protocol ModuleBuilderProtocol {
     func buildFavoritesModule() -> FavoritesViewController
     func buildListModule(categoryName: String, APIAttribute: String) -> ListViewController
     func buildDetailModule(businessID: String) -> DetailViewController
+    func buildFilterModule() -> FilterViewController
     //func buildSearchModule(router: RouterProtocol) -> UIViewController()
 
 }
@@ -51,11 +52,18 @@ final class ModuleBuilder: ModuleBuilderProtocol {
         return view
     }
     
-    
     func buildFavoritesModule() -> FavoritesViewController {
         let view = FavoritesViewController()
         let persistanceManager = PersistanceManager()
         let presenter = FavoritesPresenter(view: view, persistanceManager: persistanceManager)
+        view.presenter = presenter
+        
+        return view
+    }
+    
+    func buildFilterModule() -> FilterViewController {
+        let view = FilterViewController()
+        let presenter = FilterPresenter(view: view)
         view.presenter = presenter
         
         return view

@@ -11,7 +11,6 @@ final class ListViewController: UIViewController, ListViewProtocol {
     // MARK: - Properties & Elements
     /// Main tableView and SegmentedControl as filter
     private let tableView = UITableView()
-    private let segmentedControl = UISegmentedControl(items: ["$", "$$", "$$$", "$$$$"])
     
     var presenter: ListPresenterProtocol!
     
@@ -25,7 +24,7 @@ final class ListViewController: UIViewController, ListViewProtocol {
         view.backgroundColor = .systemBackground
         configureTableView()
         configureViewController()
-        segmentedControl.addTarget(self, action: #selector(filterDidChanged(_:)), for: .valueChanged)
+        addFilterButtonToNavBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -33,24 +32,9 @@ final class ListViewController: UIViewController, ListViewProtocol {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
-    
+
     
     // MARK: - Private methods
-    
-    /// Fetching new data when price filter criteria changed
-    /// - Parameter segmentedControl: SegmentedControl
-    @objc private func filterDidChanged(_ segmentedControl: UISegmentedControl) {
-        var priceFilter = ""
-        
-        switch segmentedControl.selectedSegmentIndex {
-        case 0: priceFilter = "1"
-        case 1: priceFilter = "2"
-        case 2: priceFilter = "3"
-        case 3: priceFilter = "4"
-        default: priceFilter = "1,2,3,4"
-        }
-        presenter.didSegmentedValueChanged(selectedIndex: priceFilter)
-    }
     
     /// ViewController configurations
     private func configureViewController() {
@@ -59,6 +43,16 @@ final class ListViewController: UIViewController, ListViewProtocol {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .systemOrange
+    }
+    
+    private func addFilterButtonToNavBar() {
+        let filterButton = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterChoseButtonTapped))
+
+        self.navigationItem.rightBarButtonItem = filterButton
+    }
+    
+    @objc func filterChoseButtonTapped() {
+        presenter.didFilterChooseButtonTapped()
     }
     
     /// Main tableView configurations
@@ -71,18 +65,6 @@ final class ListViewController: UIViewController, ListViewProtocol {
         tableView.register(BusinessesListItemTableViewCell.self, forCellReuseIdentifier: BusinessesListItemTableViewCell.identifier)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .secondarySystemBackground
-        tableView.tableHeaderView = tableViewHeaderView()
-    }
-    
-    /// Shows filter as segmentedControl in headerView
-    /// - Returns: segmentedControl as UIView
-    private func tableViewHeaderView() -> UIView {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
-        
-        headerView.addSubview(segmentedControl)
-        segmentedControl.center = headerView.center
-        
-        return headerView
     }
     
     
@@ -182,7 +164,8 @@ extension ListViewController: UIScrollViewDelegate {
             showingSpinnerInFooter(flag: true)
             
             if presenter.offset > presenter.remaining {
-                presenter.offset += presenter.remaining
+                presenter.offset = presenter.offset
+                presenter.count = presenter.remaining
             }
             
             presenter.fetchDataForPagination(offset: presenter.offset)

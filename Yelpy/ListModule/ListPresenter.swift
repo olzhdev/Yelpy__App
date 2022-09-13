@@ -25,22 +25,30 @@ protocol ListPresenterProtocol {
     var APIAttribute: String? { get set }
     var businessesList: [BusinessItem] { get set }
     
+    var limiter: Int { get set }
     var count: Int { get set }
     var offset: Int { get set }
     var remaining: Int { get set }
     var priceFilter: String { get set }
+    var attributes: String { get set }
 
-    func fetchData(forCategory: String, count: Int, offset: Int, price: String)
+    func fetchData(forCategory: String, count: Int, offset: Int, price: String, attributes: String)
     func fetchDataForPagination(offset: Int)
     func setNavBarTitle()
     func didGoToBusinessInfoTapped(businessID: String)
-    func didSegmentedValueChanged(selectedIndex: String)
+    func didFilterChooseButtonTapped()
+    func didNotificationFromFilterModuleReceived()
     
     var completionHandler: ((String) -> Void)? { get set }
+    var completionHandler2: (() -> Void)? { get set }
+    
+    var observer: NSObjectProtocol? { get set }
+
 }
 
 
 final class ListPresenter: ListPresenterProtocol {
+    
     // MARK: - Properties
     weak var view: ListViewProtocol!
     var APICaller: APICallerProtocol!
@@ -48,15 +56,22 @@ final class ListPresenter: ListPresenterProtocol {
     var APIAttribute: String?
     var businessesList: [BusinessItem] = []
     
-    var count: Int = 5
+    var limiter: Int = 5
+    lazy var count: Int = limiter
+    lazy var offset: Int = limiter
     var remaining: Int = 0
-    lazy var offset: Int = count
+
     var priceFilter = "1,2,3,4"
+    var attributes = ""
 
     var completionHandler: ((String) -> Void)?
+    var completionHandler2: (() -> Void)?
+    
+    var observer: NSObjectProtocol?
     
     
     // MARK: - Init
+    
     required init(view: ListViewProtocol,
                   APICaller: APICallerProtocol,
                   categoryName: String,
@@ -66,17 +81,19 @@ final class ListPresenter: ListPresenterProtocol {
         self.APICaller = APICaller
         self.categoryName = categoryName
         self.APIAttribute = APIAttribute
-        fetchData(forCategory: APIAttribute, count: count, offset: 0, price: priceFilter)
+        fetchData(forCategory: APIAttribute, count: count, offset: 0, price: priceFilter, attributes: attributes)
         setNavBarTitle()
+        didNotificationFromFilterModuleReceived()
     }
     
-    
+
     // MARK: - Methods
-    func fetchData(forCategory: String, count: Int, offset: Int, price: String) {
+    
+    func fetchData(forCategory: String, count: Int, offset: Int, price: String, attributes: String) {
 
         self.view.showingSpinner(flag: true)
         
-        APICaller.getBusinessList(forCategory: forCategory, count: count, offset: offset, price: price) { [weak self] result in
+        APICaller.getBusinessList(forCategory: forCategory, count: count, offset: offset, price: price, attributes: attributes) { [weak self] result in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
@@ -84,7 +101,7 @@ final class ListPresenter: ListPresenterProtocol {
                 case .success(let businessesList):
                     self.businessesList = businessesList.businesses
                     self.remaining = businessesList.total - self.count
-
+                    //print("Total: \(businessesList.total) Remainig: \(self.remaining)")
                     self.view.showingSpinner(flag: false)
                     
                     self.view.success()
@@ -95,12 +112,39 @@ final class ListPresenter: ListPresenterProtocol {
         }
     }
     
-    func didSegmentedValueChanged(selectedIndex: String) {
-        fetchData(forCategory: APIAttribute!, count: count, offset: 0, price: selectedIndex)
+    func didFilterChooseButtonTapped() {
+        completionHandler2?()
+    }
+    
+    func didNotificationFromFilterModuleReceived() {
+        observer = NotificationCenter.default.addObserver(
+            forName: NSNotification.Name("applyFilterAndFetch"),
+            object: nil,
+            queue: .main,
+            using: {[weak self] notification in
+                
+                guard let self = self else { return }
+                guard let object = notification.object as? [String: String] else {return}
+                guard let attributes = object["attributes"],
+                      let priceFilterAttribute = object["priceFilterAttribute"] else {return}
+                
+                self.priceFilter = priceFilterAttribute
+                self.attributes = attributes
+                
+                self.fetchData(forCategory: self.APIAttribute!, count: self.count, offset: 0, price: self.priceFilter, attributes: self.attributes)
+                
+                self.offset = self.limiter
+                self.remaining = 0
+            })
     }
     
     func fetchDataForPagination(offset: Int) {
-        APICaller.getBusinessList(forCategory: APIAttribute!, count: count, offset: offset, price: priceFilter) { [weak self] result in
+        APICaller.getBusinessList(forCategory: APIAttribute!,
+                                  count: count,
+                                  offset: offset,
+                                  price: priceFilter,
+                                  attributes: attributes)
+        { [weak self] result in
             guard let self = self else { return }
             
             DispatchQueue.main.async {

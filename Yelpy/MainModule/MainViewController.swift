@@ -14,6 +14,8 @@ class MainViewController: UIViewController, MainViewProtocol {
     
     private var lastOffsetY: CGFloat = 0
     
+
+
     
     // MARK: - Lifecycle
     override func loadView() {

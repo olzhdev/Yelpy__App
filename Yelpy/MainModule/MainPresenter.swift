@@ -57,7 +57,8 @@ final class MainPresenter: MainPresenterProtocol {
         APICaller.getBusinessList(forCategory: "hot_and_tranding",
                                   count: 5,
                                   offset: 0,
-                                  price: "1,2,3,4")
+                                  price: "1,2,3,4",
+                                  attributes: "")
         { [weak self] result in
             guard let self = self else { return }
             

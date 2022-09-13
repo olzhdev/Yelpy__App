@@ -16,11 +16,6 @@ protocol Coordinator {
     func startFirstView() -> UINavigationController?
 }
 
-///From presenter to coordinator
-protocol FlowController {
-    associatedtype T
-    var completionHandler: ((T) -> ())? { get set }
-}
 
 final class CoordinatorBuilder {
     

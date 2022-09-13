@@ -49,6 +49,9 @@
 		04C8E1F128ACF0A200DDA37F /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8E1F028ACF0A200DDA37F /* TrendingTableViewCell.swift */; };
 		04D2DD1C28CDF84800D8DA49 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04D2DD1B28CDF84800D8DA49 /* Alamofire */; };
 		04D2DD1E28CDF92200D8DA49 /* APICallerAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2DD1D28CDF92200D8DA49 /* APICallerAlamofire.swift */; };
+		04D2DD4A28CF16DB00D8DA49 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2DD4928CF16DB00D8DA49 /* FilterViewController.swift */; };
+		04D2DD5728CF18D800D8DA49 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04D2DD5628CF18D800D8DA49 /* SnapKit */; };
+		04D2DD5C28CF363E00D8DA49 /* FilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2DD5B28CF363E00D8DA49 /* FilterPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +95,8 @@
 		04C8E1EE28ACF08300DDA37F /* CommonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableViewCell.swift; sourceTree = "<group>"; };
 		04C8E1F028ACF0A200DDA37F /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
 		04D2DD1D28CDF92200D8DA49 /* APICallerAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallerAlamofire.swift; sourceTree = "<group>"; };
+		04D2DD4928CF16DB00D8DA49 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		04D2DD5B28CF363E00D8DA49 /* FilterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +108,7 @@
 				04D2DD1C28CDF84800D8DA49 /* Alamofire in Frameworks */,
 				0468309D28B47D980055688A /* SkeletonView in Frameworks */,
 				0468309428B25BBD0055688A /* SDWebImage in Frameworks */,
+				04D2DD5728CF18D800D8DA49 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +200,7 @@
 				046830AE28B659F20055688A /* ListModule */,
 				04C8E1E028ACEA9700DDA37F /* DetailModule */,
 				04C8E1DB28ACEA6400DDA37F /* FavoritesModule */,
+				04D2DD5D28CF364500D8DA49 /* FilterModule */,
 				04C8E1CF28ACE9A200DDA37F /* Supports */,
 				04C8E1C528ACDF9200DDA37F /* Info.plist */,
 			);
@@ -267,6 +274,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		04D2DD5D28CF364500D8DA49 /* FilterModule */ = {
+			isa = PBXGroup;
+			children = (
+				04D2DD4928CF16DB00D8DA49 /* FilterViewController.swift */,
+				04D2DD5B28CF363E00D8DA49 /* FilterPresenter.swift */,
+			);
+			path = FilterModule;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -288,6 +304,7 @@
 				0468309528B25BBD0055688A /* SDWebImageMapKit */,
 				0468309C28B47D980055688A /* SkeletonView */,
 				04D2DD1B28CDF84800D8DA49 /* Alamofire */,
+				04D2DD5628CF18D800D8DA49 /* SnapKit */,
 			);
 			productName = Yelpy;
 			productReference = 04C8E1B128ACDF8C00DDA37F /* Yelpy.app */;
@@ -321,6 +338,7 @@
 				0468309228B25BBD0055688A /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				0468309B28B47D980055688A /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				04D2DD1A28CDF84800D8DA49 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				04D2DD5528CF18D800D8DA49 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 04C8E1B228ACDF8C00DDA37F /* Products */;
 			projectDirPath = "";
@@ -371,6 +389,7 @@
 				0468308F28B156C90055688A /* Business.swift in Sources */,
 				0459F61528ACF15900B48125 /* PhotoSliderCollectionViewCell.swift in Sources */,
 				04C8E1D328ACE9E800DDA37F /* LayoutMainView.swift in Sources */,
+				04D2DD4A28CF16DB00D8DA49 /* FilterViewController.swift in Sources */,
 				04C8E1E428ACEAD800DDA37F /* ListPresenter.swift in Sources */,
 				04C8E1B728ACDF8C00DDA37F /* SceneDelegate.swift in Sources */,
 				04C8E1EF28ACF08300DDA37F /* CommonTableViewCell.swift in Sources */,
@@ -383,6 +402,7 @@
 				0468309A28B47CAB0055688A /* LayoutDetailView.swift in Sources */,
 				04D2DD1E28CDF92200D8DA49 /* APICallerAlamofire.swift in Sources */,
 				046830A328B4DB6D0055688A /* FavoritesCoordinator.swift in Sources */,
+				04D2DD5C28CF363E00D8DA49 /* FilterPresenter.swift in Sources */,
 				04C8E1DD28ACEA7B00DDA37F /* DetailPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +637,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		04D2DD5528CF18D800D8DA49 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -639,6 +667,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04D2DD1A28CDF84800D8DA49 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		04D2DD5628CF18D800D8DA49 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04D2DD5528CF18D800D8DA49 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

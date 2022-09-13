@@ -13,6 +13,7 @@ protocol APICallerProtocol {
         count: Int,
         offset: Int,
         price: String,
+        attributes: String,
         completion: @escaping (Result<BusinessesList, Error>) -> Void)
     
     func getBusinessDetail(
@@ -37,6 +38,7 @@ final class APICallerDefault: APICallerProtocol {
         count: Int,
         offset: Int,
         price: String = "1,2,3,4",
+        attributes: String,
         completion: @escaping (Result<BusinessesList, Error>) -> Void)
     {
         
@@ -46,13 +48,14 @@ final class APICallerDefault: APICallerProtocol {
                              "categories": category,
                              "limit": String(count),
                              "price": price,
-                             "offset": String(offset),])
+                             "offset": String(offset),
+                             "attributes": attributes])
             
         doRequest(request: request,
                   expecting: BusinessesList.self,
                   completion: completion)
     }
-    
+
     /// Get detailed information of business
     /// - Parameters:
     ///   - id: ID of given business

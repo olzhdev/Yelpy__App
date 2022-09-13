@@ -15,9 +15,9 @@ Yelpy is an application for discovering various restaurants and cafes by categor
 
 ## Concepts used
 
-* Fully programmatic UI (Autolayout).
+* Fully programmatic UI (Constraints, Autolayout). (Also used SnapKit to some views for demonstrating)
 * MVP+C.
-* External libraries: SDWebImage, SkeletonView, Alamofire
+* External libraries: SDWebImage, SkeletonView, Alamofire, SnapKit
 * MapKit.
 * JSON parsing using Codable.
 * Network requests using both default URLSession and Alamofire library.
@@ -38,7 +38,7 @@ Yelpy is an application for discovering various restaurants and cafes by categor
 ## Plans
 
 - Determining the user's current location
-- Adding more filters for searching
+- ~~Adding more filters for searching~~ Done
 
 ##
 <p align="center">
